@@ -4,7 +4,6 @@ import com.ms.email.dtos.EmailDto;
 import com.ms.email.model.EmailModel;
 import com.ms.email.service.EmailService;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
