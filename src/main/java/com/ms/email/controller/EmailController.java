@@ -37,9 +37,7 @@ public class EmailController {
    */
   @PostMapping("/sending-email")
   public ResponseEntity<EmailModel> enviarEmail(@RequestBody @Valid EmailDto emailDto) {
-    EmailModel emailModel= new EmailModel();
-    BeanUtils.copyProperties(emailDto, emailModel);
-    emailService.enviarEmail(emailModel);
+    EmailModel emailModel = emailService.enviarEmail(emailDto);
     return new ResponseEntity<>(emailModel, HttpStatus.CREATED);
   }
 }

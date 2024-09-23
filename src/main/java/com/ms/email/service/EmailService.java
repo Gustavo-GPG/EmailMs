@@ -1,9 +1,11 @@
 package com.ms.email.service;
 
+import com.ms.email.dtos.EmailDto;
 import com.ms.email.enums.EmailStatus;
 import com.ms.email.model.EmailModel;
 import com.ms.email.repositories.EmailRepository;
 import java.time.LocalDateTime;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -33,10 +35,11 @@ public class EmailService {
   /**
    * Enviar email.
    *
-   * @param emailModel uma entidade de email
+   * @param emailDto um DTO de email
    */
-  public void enviarEmail(EmailModel emailModel) {
-
+  public EmailModel enviarEmail(EmailDto emailDto) {
+    EmailModel emailModel= new EmailModel();
+    BeanUtils.copyProperties(emailDto, emailModel);
     emailModel.setDataDeEnvio(LocalDateTime.now());
 
     try {
@@ -53,6 +56,6 @@ public class EmailService {
     } finally {
       emailRepository.save(emailModel);
     }
-
+  return emailModel;
   }
 }
