@@ -10,6 +10,9 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.Data;
 
+/**
+ * Representação de uma entidade email.
+ */
 @Entity
 @Data
 @Table(name = "TB_EMAIL")

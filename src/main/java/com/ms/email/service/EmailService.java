@@ -1,6 +1,5 @@
 package com.ms.email.service;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.ms.email.enums.EmailStatus;
 import com.ms.email.model.EmailModel;
 import com.ms.email.repositories.EmailRepository;
@@ -11,6 +10,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+/**
+ * Serviço do email.
+ */
 @Service
 public class EmailService {
   @Autowired
@@ -19,10 +21,20 @@ public class EmailService {
   @Autowired
   private JavaMailSender emailSender;
 
+  /**
+   * Método construtor de um serviço de email.
+   *
+   * @param emailRepository the email repository
+   */
   public EmailService(EmailRepository emailRepository) {
     this.emailRepository = emailRepository;
   }
 
+  /**
+   * Enviar email.
+   *
+   * @param emailModel uma entidade de email
+   */
   public void enviarEmail(EmailModel emailModel) {
 
     emailModel.setDataDeEnvio(LocalDateTime.now());
